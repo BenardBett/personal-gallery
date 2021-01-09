@@ -15,3 +15,15 @@ def images(request):
     categories= Category.objects.all()
     location= Location.objects.all()
     return render(request, 'all/images.html',locals())
+
+def search_category(request):
+    if 'image' in request.GET and request.GET["image"]:
+        search_term=request.GET.get("image")
+        search_images=Image.search_by_category(search_item)
+        message=f"{search_term}"
+        
+        return render(request, 'all/images.html', {"message":message, "images": search_images})
+    
+    else:
+        message="You haven't  searched for any term"
+        return render(request, 'all/images.html',{"message": message})
