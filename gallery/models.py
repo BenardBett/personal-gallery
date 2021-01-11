@@ -10,6 +10,7 @@ class Image(models.Model):
     image_location = models.ForeignKey('Location',default='', on_delete = models.CASCADE)
     image_category = models.ForeignKey('Category',default='', on_delete = models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True, null = True)
+    description=models.TextField()
 
     def __str__(self):
         return self.save()

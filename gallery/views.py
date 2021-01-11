@@ -19,7 +19,7 @@ def images(request):
 def search_category(request):
     if 'image' in request.GET and request.GET["image"]:
         search_term=request.GET.get("image")
-        search_images=Image.search_by_category(search_item)
+        search_images=Image.search_by_category(search_term)
         message=f"{search_term}"
         
         return render(request, 'all/images.html', {"message":message, "images": search_images})
